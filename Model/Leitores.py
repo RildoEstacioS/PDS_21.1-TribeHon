@@ -1,7 +1,7 @@
 import Pessoa
-class Leitor():
+class Leitor(Pessoa):
     def __init__(self, login, senha, nome, cpf, nivel = int, idade = int ):
-        super(nome, cpf, idade)
+        super().__init__(nome, cpf, idade)
         self.__login = login
         self.__senha = senha
         self.__nivel = nivel
