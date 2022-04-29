@@ -1,3 +1,4 @@
+import Leituras
 class Livro():
     def __init__(self,titulo, autor, data_publicacao,paginas,sinopse,sbn, genero =[] ):
         self.__titulo = titulo
@@ -7,7 +8,8 @@ class Livro():
         self.__sinopse = sinopse
         self.__sbn = sbn
         self.__genero = genero
-    #criar gets e sets
+        self.leituras = Leituras(0, self)
+
 
     def get_titulo(self):
         return self.__titulo

@@ -1,3 +1,4 @@
+#Classe Abstrata
 import abc
 class Pessoa(abc.ABC):
     def __init__(self, nome, cpf, idade = int):
