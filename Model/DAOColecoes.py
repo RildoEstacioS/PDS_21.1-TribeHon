@@ -1,4 +1,4 @@
-import Colecao, Leitores
+import Colecao, Leitor, psycopg2
 # Metodo ainda precisa ser definido melhor como os parametros para aver uma edção
 def editar_Colecao():
     pass

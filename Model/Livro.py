@@ -1,14 +1,14 @@
-import Leituras
+import Leitura
 class Livro():
-    def __init__(self,titulo, autor, data_publicacao,paginas,sinopse,sbn, genero =[] ):
-        self.__titulo = titulo
-        self.__autor = autor
-        self.__data_publicacao = data_publicacao
-        self.__paginas = paginas
-        self.__sinopse = sinopse
-        self.__sbn = sbn
-        self.__genero = genero
-        self.leituras = Leituras(0, self)
+    def __init__(self,titulo, data_publicacao,paginas,sinopse,sbn, genero , autor ):
+        self.titulo = titulo
+        self.autor = autor
+        self.data_publicacao = data_publicacao
+        self.paginas = paginas
+        self.sinopse = sinopse
+        self.sbn = sbn
+        self.genero = genero
+        self.leitura = Leitura(0, self)
 
 
     def get_titulo(self):
