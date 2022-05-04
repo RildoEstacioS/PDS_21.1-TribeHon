@@ -6,9 +6,9 @@ class Leitor(Pessoa):
         self.senha = senha
         self.nivel = nivel
         self.colecao = Colecao()
-        self.__livros_lidos = int(0)
-        self.__paginas_lidas = 0
-        self.__leitura = Leitura()
+        self.livros_lidos = int(0)
+        self.paginas_lidas = 0
+        self.leitura = Leitura()
 
     def ler_livro(self):
         # metodo responsavel pela busca na base e retorno de livor escolhido

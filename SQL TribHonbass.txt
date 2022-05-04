@@ -11,6 +11,8 @@ create table if not exists leitores(
 	senha varchar(255),
 	nivel integer not null,
 	id_pessoa integer not null,
+	paginas_lidas integer,
+	livros_lidos integer,
 	constraint pk_leitores primary key (id),
 	constraint fk_pessoa foreign key (id_pessoa) references pessoas(id)
 	

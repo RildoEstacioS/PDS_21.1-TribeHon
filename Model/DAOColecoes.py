@@ -11,7 +11,7 @@ def remover_Colecao(nome = str):
     #Remover Colecao de acordo com o nome dela
     pass
 
-def criar_Colecao( nome_da_colecao = str, lista_de_ids = [], leitor = Leitores()):
+def criar_Colecao( nome_da_colecao = str, lista_de_ids = [], leitor = Leitor):
     Colecao(nome_da_colecao, lista_de_ids, leitor)
     '''Esse metodo gerara uma lista[] com os ids dos livros da basse e adicionara na colecao{}'''
     # metodo que possibilitara criar lista com varios livros

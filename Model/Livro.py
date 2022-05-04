@@ -8,4 +8,4 @@ class Livro():
         self.sinopse = sinopse
         self.sbn = sbn
         self.genero = genero
-        self.leitura = Leitura(0, self)
+        self.leitura = Leitura(0, self, False)
