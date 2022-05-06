@@ -12,7 +12,6 @@ create table if not exists leitores(
 	nivel integer not null,
 	id_pessoa integer not null,
 	paginas_lidas integer,
-	livros_lidos integer,
 	constraint pk_leitores primary key (id),
 	constraint fk_pessoa foreign key (id_pessoa) references pessoas(id)
 	
@@ -59,8 +58,9 @@ create table if not exists leituras(
 	);
 create table if not exists colecao(
 	id serial not null,
+	nome varchar(80) unique,
 	id_leitor integer not null,
-	id_livro integer not null,
+	id_livro integer[] not null,
 	constraint fk_leitor foreign key (id_leitor) references leitores(id),
 	constraint fk_livro foreign key (id_livro) references livros(id)
 )

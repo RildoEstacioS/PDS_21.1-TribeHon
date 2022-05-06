@@ -1,21 +1,17 @@
 import Colecao, Leitor, psycopg2
-# Metodo ainda precisa ser definido melhor como os parametros para aver uma edção
-def editar_Colecao():
-    pass
-#mesmo esquema
-def adicionar_livro_a_Colecao():
-    pass
+conn = psycopg2.connect("dbname=TribHonbass user=postgres password=Horrivel/10")
+cur = conn.cursor()
 
-def remover_Colecao(nome = str):
+def adicionar_livro_a_Colecao(colecao = Colecao):
+    cur.execute("UPDATE colecao SET nome = {}, id_leitor = {}, id_livro = ARRAY[{}] WHERE nome LIKE {} ".format(colecao.nome, colecao.id_leitor, colecao.id_livro))
+    conn.commit()
 
-    #Remover Colecao de acordo com o nome dela
-    pass
+def remover_Colecao(nome):
+    return cur.execute("DELETE * FROM colecao WHERE nome LIKE {}".format(nome))
 
-def criar_Colecao( nome_da_colecao = str, lista_de_ids = [], leitor = Leitor):
-    Colecao(nome_da_colecao, lista_de_ids, leitor)
-    '''Esse metodo gerara uma lista[] com os ids dos livros da basse e adicionara na colecao{}'''
-    # metodo que possibilitara criar lista com varios livros
-    # self.colecao(nome_da_colecao:lista_de_ids)
+def criar_Colecao( colecao = Colecao, leitor = Leitor):
+    cur.execute("INSERT INTO colecao (nome ,id_leitor, id_livro) VALUES (%s,%s, %s)", (colecao.nome, colecao.id_livros, cur.execute("SELECT id FROM leitor WHERE login LIKE {}".format(leitor.login))))
+    conn.commit()
+
 def buscar_Colecao(nome):
-    #busca a colecao com base no nome do mesmo
-    pass
+    return cur.execute("SELECT * FROM colecao WHERE nome LIKE {}".format(nome))
