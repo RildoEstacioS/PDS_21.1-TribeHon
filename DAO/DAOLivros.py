@@ -1,7 +1,7 @@
-import Livro ,psycopg2
+import Model.Livro ,psycopg2
 conn = psycopg2.connect("dbname=TribHonbass user=postgres password=Horrivel/10")
 cur = conn.cursor()
-def editar_Livro(new_livro = Livro, old_livro = Livro):
+def editar_Livro(new_livro = Model.Livro, old_livro = Model.Livro):
     if new_livro.sbn == old_livro.sbn:
         if cur.execute("SELECT * FROM livros WHERE sbn LIKE {};".format(old_livro.sbn)):
             cur.execute(
@@ -20,11 +20,11 @@ def buscar_livro(nome_artistico):
     return cur.execute("SELECT * FROM livros WHERE id_autor[:] LIKE {};".format(cur.execute("SELECT id FROM autores WHERE nome_artistico LIKE {};".format(nome_artistico))))
 def indicar_Livro():
     pass
-def remover_Livro(livro = Livro):
+def remover_Livro(livro = Model.Livro):
    cur.execute("DELETE FROM livros WHERE sbn LIKE {};".format(livro.sbn))
    conn.commit()
 
-def adicionar_Livro(livro = Livro ):
+def adicionar_Livro(livro = Model.Livro ):
     if cur.execute("SELECT * FROM livros WHERE sbn LIKE {};".format(livro.sbn)) == None:
         cur.execute("INSERT INTO livros (titulo, data_Publicacao, sbn, paginas, genero, autor, sinopse) VALUES (%s, %s, %s,%s, ARRAY [%s], ARRAY[%s],%s)",(livro.titulo, livro.data_publicavcao, livro.sbn, livro.paginas, livro.genero, livro.autor, livro.sinopse))
         conn.commit()

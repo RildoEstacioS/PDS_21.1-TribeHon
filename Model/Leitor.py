@@ -1,4 +1,4 @@
-import Pessoa, Leitura, DAOColecoes, Colecao
+import Pessoa, Leitura, DAO.DAOColecoes, Colecao
 class Leitor(Pessoa):
     def __init__(self, login, senha, nome, cpf, nivel = int, idade = int ):
         super().__init__(nome, cpf, idade)
@@ -14,7 +14,7 @@ class Leitor(Pessoa):
         # metodo responsavel pela busca na base e retorno de livor escolhido
         pass
     def criar_colecao(self, nome_da_colecao = str, lista_de_ids = []):
-        DAOColecoes.criar_Colecao(nome_da_colecao,lista_de_ids, self)
+        DAO.DAOColecoes.criar_Colecao(nome_da_colecao,lista_de_ids, self)
         #Esse metodo gerara uma lista[] com os ids dos livros da basse e adicionara na colecao{}'''
         # metodo que possibilitara criar lista com varios livros
         #self.colecao(nome_da_colecao:lista_de_ids)

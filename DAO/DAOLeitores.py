@@ -1,7 +1,7 @@
-import Leitor, psycopg2
+import Model.Leitor, psycopg2
 conn = psycopg2.connect("dbname=TribHonbass user=postgres password=Horrivel/10")
 cur = conn.cursor()
-def adicionar_Leitor( leitor = Leitor ):
+def adicionar_Leitor( leitor = Model.Leitor ):
     if validar_login(leitor.login) is None:
         cur.execute("INSERT INTO pessoas (nome,cpf,idade) VALUES (%s, %s, %s)",( leitor.nome, leitor.cpf, leitor.idade))
         conn.commit()
@@ -26,9 +26,6 @@ def remover_leitor(login):
 
 def buscar_leitor(login):
     return cur.execute("SELECT * FROM pessoas WHERE login LIKE {};".format(login))
-
-def recompesna(leitor = Leitor):
-    pass
 
 def validar_login(login):
     if buscar_leitor(login) == None:
