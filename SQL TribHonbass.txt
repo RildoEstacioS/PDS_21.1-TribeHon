@@ -12,7 +12,7 @@ create table if not exists leitores(
 	senha varchar(255),
 	nivel integer not null,
 	id_pessoa integer not null,
-	livros_emprestados[] integer,
+	livros_emprestados integer [],
 	paginas_lidas integer,
 	constraint pk_leitores primary key (id),
 	constraint fk_pessoa foreign key (id_pessoa) references pessoas(id)	
@@ -43,9 +43,11 @@ create table if not exists livros(
 	edicao integer,
 	id_genero integer [],
 	id_autor integer[] not null,
+	id_generos integer,
+	id_autores integer,
 	constraint pk_sbn primary key(id),
-	constraint fk_genero foreign key (id_genero) references generos(id),
-	constraint fk_autores foreign key (id_autor) references autores(id)
+	constraint fk_genero foreign key (id_generos) references generos(id),
+	constraint fk_autores foreign key (id_autores) references autores(id)
 	
 );
 
@@ -65,6 +67,7 @@ create table if not exists colecao(
 	nome varchar(80) unique,
 	id_leitor integer not null,
 	id_livro integer[] not null,
+	id_livros integer,
 	constraint fk_leitor foreign key (id_leitor) references leitores(id),
-	constraint fk_livro foreign key (id_livro) references livros(id)
+	constraint fk_livro foreign key (id_livros) references livros(id)
 )

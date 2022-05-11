@@ -1,4 +1,4 @@
-import psycopg2
+'''import psycopg2
 conn = psycopg2.connect("dbname=test user=postgres password=Horrivel/10")
 cur = conn.cursor()
 print('foi')
@@ -9,7 +9,9 @@ print(cur.execute("SELECT * FROM test ;"))
 
 print(cur.fetchone())
 #conn.commit()
-
+'''
 '''conn = psycopg2.connect("dbname=TribHonbass user=postgres password=Horrivel/10")
 cur = conn.cursor()'''
-
+import DAO.DAOLeitores
+from Model.Leitor import Leitor
+DAO.DAOLeitores.adicionar_Leitor(Leitor("victortt", "kkkct", "victor", "10846455439", 0 , 22))

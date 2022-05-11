@@ -1,4 +1,4 @@
-import Leitura
+from Model.Leitura import Leituras
 class Livro():
     def __init__(self,titulo,sinopse, data_publicacao =int,paginas=int,sbn=int, genero = [] , autor = []):
         self.titulo = titulo
@@ -8,4 +8,4 @@ class Livro():
         self.sinopse = sinopse
         self.sbn = sbn
         self.genero = genero
-        self.leitura = Leitura(0, self, False)
+        #self.leitura =Leituras(0, self, False)

@@ -2,11 +2,20 @@ import Model.Leitor, psycopg2
 conn = psycopg2.connect("dbname=TribHonbass user=postgres password=Horrivel/10")
 cur = conn.cursor()
 def adicionar_Leitor( leitor = Model.Leitor ):
-    if validar_login(leitor.login) is None:
-        cur.execute("INSERT INTO pessoas (nome,cpf,idade) VALUES (%s, %s, %s)",( leitor.nome, leitor.cpf, leitor.idade))
+   # if validar_login(leitor.login) != leitor.login:
+        #cur.execute("INSERT INTO pessoas (nome,cpf,idade) VALUES (%s, %s, %s)",( leitor.nome, leitor.cpf, leitor.idade))
         conn.commit()
-        cur.execute("INSERT INTO leitores (login,senha, nivel, id_pessoa, paginas_lidas, livros_lidos) VALUES (%s, %s, %s, %s, %s, %s)", (leitor.login,leitor.senha,leitor.nivel, cur.execute("SELECT id FROM pessoas WHERE cpf LIKE {};".format(leitor.cpf), leitor.paginas_lidas, leitor.livros_lidos)))
-        conn.commit()
+        print(cur.execute("SELECT id FROM pessoas WHERE nome LIKE {};".format(leitor.nome)))
+       # cur.execute("INSERT INTO leitores (login,senha, nivel, id_pessoa, paginas_lidas) VALUES (%s, %s, %s, %s, %s)", (leitor.login,leitor.senha,leitor.nivel, cur.execute("SELECT id FROM pessoas WHERE cpf LIKE {};".format(leitor.cpf), leitor.paginas_lidas)))
+
+
+'''cur.execute(
+    "INSERT INTO leitores (login,senha, nivel, id_pessoa, paginas_lidas, livros_lidos) VALUES (%s, %s, %s, %s, %s, %s)",
+    (leitor.login, leitor.senha, leitor.nivel,
+     cur.execute("SELECT id FROM pessoas WHERE cpf LIKE {};".format(leitor.cpf), leitor.paginas_lidas,
+                 leitor.livros_lidos)))'''
+
+conn.commit()
 
 
 def editar_Leitores(novo_leitor, old_leitor):
