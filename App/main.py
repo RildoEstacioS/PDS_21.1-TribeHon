@@ -14,4 +14,5 @@ print(cur.fetchone())
 cur = conn.cursor()'''
 import DAO.DAOLeitores
 from Model.Leitor import Leitor
-DAO.DAOLeitores.adicionar_Leitor(Leitor("victortt", "kkkct", "victor", "10846455439", 0 , 22))
+#DAO.DAOLeitores.adicionar_Leitor(Leitor("victortt", "kkkct", "victor", "10846455439", 0 , 22))
+print(DAO.DAOLeitores.buscar_leitor("victortt"))

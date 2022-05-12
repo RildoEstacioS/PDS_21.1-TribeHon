@@ -2,20 +2,14 @@ import Model.Leitor, psycopg2
 conn = psycopg2.connect("dbname=TribHonbass user=postgres password=Horrivel/10")
 cur = conn.cursor()
 def adicionar_Leitor( leitor = Model.Leitor ):
-   # if validar_login(leitor.login) != leitor.login:
-        #cur.execute("INSERT INTO pessoas (nome,cpf,idade) VALUES (%s, %s, %s)",( leitor.nome, leitor.cpf, leitor.idade))
+    if validar_login(leitor.login) != leitor.login:
+        cur.execute("INSERT INTO pessoas (nome,cpf,idade) VALUES (%s, %s, %s)",( leitor.nome, leitor.cpf, leitor.idade))
         conn.commit()
-        print(cur.execute("SELECT id FROM pessoas WHERE nome LIKE {};".format(leitor.nome)))
-       # cur.execute("INSERT INTO leitores (login,senha, nivel, id_pessoa, paginas_lidas) VALUES (%s, %s, %s, %s, %s)", (leitor.login,leitor.senha,leitor.nivel, cur.execute("SELECT id FROM pessoas WHERE cpf LIKE {};".format(leitor.cpf), leitor.paginas_lidas)))
-
-
-'''cur.execute(
-    "INSERT INTO leitores (login,senha, nivel, id_pessoa, paginas_lidas, livros_lidos) VALUES (%s, %s, %s, %s, %s, %s)",
-    (leitor.login, leitor.senha, leitor.nivel,
-     cur.execute("SELECT id FROM pessoas WHERE cpf LIKE {};".format(leitor.cpf), leitor.paginas_lidas,
-                 leitor.livros_lidos)))'''
-
-conn.commit()
+        cur.execute("SELECT id FROM pessoas WHERE idade = {};".format(leitor.idade))
+        c = cur.fetchone()
+        cur.execute("INSERT INTO leitores (login,senha, nivel, id_pessoa, paginas_lidas) VALUES (%s, %s, %s, %s, %s)", (leitor.login,leitor.senha,leitor.nivel, c , leitor.paginas_lidas))
+        conn.commit()
+    #cur.execute("INSERT INTO leitores (login,senha, nivel, id_pessoa, paginas_lidas) VALUES (%s, %s, %s, %s, %s)",(leitor.login, leitor.senha, leitor.nivel,cur.execute("SELECT id FROM pessoas WHERE cpf LIKE {};".format(leitor.cpf), leitor.paginas_lidas)))
 
 
 def editar_Leitores(novo_leitor, old_leitor):
@@ -33,15 +27,18 @@ def remover_leitor(login):
        conn.commit()
 
 
-def buscar_leitor(login):
-    return cur.execute("SELECT * FROM pessoas WHERE login LIKE {};".format(login))
+def buscar_leitor(id_login):
+    #cur.execute("SELECT * FROM leitores WHERE login LIKE {};".format(id_login))
+    cur.execute("SELECT * FROM leitores WHERE id = {};".format(id_login))
+    return cur.fetchone()
 
 def validar_login(login):
     if buscar_leitor(login) == None:
+
         return True
     return False
 
-def validar_senha(senha):
-    if cur.execute("SELECT * FROM pessoas WHERE senha LIKE {};".format(senha)) == None:
+def validar_senha(id_senha):
+    if cur.execute("SELECT * FROM pessoas WHERE id = {};".format(id_senha)) == None:
         return True
     return False
