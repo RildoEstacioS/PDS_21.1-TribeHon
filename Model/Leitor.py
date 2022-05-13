@@ -12,13 +12,5 @@ class Leitor(Pessoa):
         self.paginas_lidas = 0
        # self.leitura = Leitura()
 
-    def ler_livro(self):
-        # metodo responsavel pela busca na base e retorno de livor escolhido
-        pass
-    def criar_colecao(self, nome_da_colecao = str, lista_de_ids = []):
-        #Esse metodo gerara uma lista[] com os ids dos livros da basse e adicionara na colecao{}'''
-        # metodo que possibilitara criar lista com varios livros
-        #self.colecao(nome_da_colecao:lista_de_ids)
-        pass
 
 

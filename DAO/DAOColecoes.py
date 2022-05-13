@@ -21,3 +21,4 @@ def buscar_Colecao(id_nome):
      cur.execute("SELECT * FROM colecao WHERE nome = {}".format(id_nome))
      #cur.execute("SELECT * FROM colecao WHERE nome LIKE {}".format(id_nome))
      return cur.fetchone()
+
