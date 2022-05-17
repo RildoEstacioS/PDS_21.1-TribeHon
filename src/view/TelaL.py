@@ -4,17 +4,17 @@ tela = Tk()
 tela.title("TribHon")  # Titulo da tela
 tela.geometry("290x260+610+153")  # Tamanho e possição
 tela.resizable(width=1, height=1)
-tela.iconbitmap('imagem/TribHonIcone.ico')
+#tela.iconbitmap('imagem\\TribHonIcone.ico')
 
 class Tela:
     def __init__(self):
         # Criação da tela
 
-        img_fundo = PhotoImage(file="imagem\\Tela.png")
+        img_fundo = PhotoImage(file="./view/imagem/Tela.png")
         img_botaoL = PhotoImage(file="imagem\\botaoL.png")
         img_botaoC = PhotoImage(file="imagem\\botaoC.png")
-
-        # Adicionar a imagem no fundo
+        
+        #Adicionar a imagem no fundo
         lab_fundo = Label(tela, image=img_fundo)
         lab_fundo.pack()
 
@@ -24,7 +24,7 @@ class Tela:
 
         botaoC = Button(tela, bd=0, image=img_botaoC, command=self.TelaCadastro)
         botaoC.place(width=139, height=42, x=74, y=201)
-
+        
         tela.mainloop()  # Deixar a tela aberta
 
     def TelaLogin(self):
@@ -146,3 +146,5 @@ class Tela:
 
         botaoLogin = Button(telaMenu, text="Atualizar Livro")
         botaoLogin.place(width=139, height=42, x=75, y=232)
+
+

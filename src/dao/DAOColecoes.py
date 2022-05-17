@@ -1,6 +1,7 @@
 import psycopg2
-from  Model.Colecao import Colecao
-from  Model.Leitor import Leitor
+from  model.Colecao import Colecao
+from  model.Leitor import Leitor
+
 conn = psycopg2.connect("dbname=TribHonbass user=postgres password=Horrivel/10")
 cur = conn.cursor()
 

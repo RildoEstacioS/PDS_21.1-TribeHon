@@ -1,5 +1,5 @@
-import Autores
-class Administrador(Autores):
+import model.Autores
+class Administrador(model.Autores):
     def __init__(self, nome_artitico,  login, senha, nome, cpf, nivel = int, idade = int):
         super(Administrador, self).__init__( nome_artitico,  login, senha, nome, cpf, nivel, idade )
 

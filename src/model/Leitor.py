@@ -1,5 +1,5 @@
-from Model.Pessoa import Pessoa
-from Model.Colecao import Colecao
+from model.Pessoa import Pessoa
+from model.Colecao import Colecao
 
 class Leitor(Pessoa):
     def __init__(self, login, senha, nome, cpf, nivel = int, idade = int ):

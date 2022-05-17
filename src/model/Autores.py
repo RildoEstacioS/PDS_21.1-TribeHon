@@ -1,4 +1,5 @@
-import Model.Leitor, Livro
+import model.Leitor
+import model.Livro
 
 
 

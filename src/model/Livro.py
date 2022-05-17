@@ -1,4 +1,4 @@
-from Model.Leitura import Leituras
+from model.Leitura import Leituras
 class Livro():
     def __init__(self,titulo,sinopse, data_publicacao =int,paginas=int,sbn=int, genero = [] , autor = []):
         self.titulo = titulo
