@@ -1,0 +1,73 @@
+create table if not exists pessoas (
+	id serial not null,
+	nome varchar(255),
+	cpf varchar (80) unique,
+	idade integer not null,
+	constraint pk_pessoas primary key (id)
+);
+
+create table if not exists leitores(
+	id serial not null,
+	login varchar(255) unique,
+	senha varchar(255),
+	nivel integer not null,
+	id_pessoa integer not null,
+	livros_emprestados integer [],
+	paginas_lidas integer,
+	constraint pk_leitores primary key (id),
+	constraint fk_pessoa foreign key (id_pessoa) references pessoas(id)	
+);
+
+create table if not exists autores(
+	id serial not null,
+	nome_artistico varchar(255) unique,
+	livros integer not null,
+	id_leitor integer not null,
+	constraint pk_autores primary key (id),
+	constraint fk_leitor foreign key (id_leitor) references leitores(id)	
+);
+
+create table if not exists generos (
+	id serial not null,
+	genero varchar(80),
+	constraint pk_genero primary key(id)
+);
+
+create table if not exists livros(
+	id serial not null,
+	titulo varchar (300),
+	sinopse varchar(255),
+	data_publicacao integer,
+	paginas integer,
+	sbn integer unique,
+	edicao integer,
+	id_genero integer [],
+	id_autor integer[] not null,
+	id_generos integer,
+	id_autores integer,
+	constraint pk_sbn primary key(id),
+	constraint fk_genero foreign key (id_generos) references generos(id),
+	constraint fk_autores foreign key (id_autores) references autores(id)
+	
+);
+
+create table if not exists leituras(
+	id serial not null,
+	ultima_pagina_lida integer,
+	progresso_leitura integer,
+	id_leitor integer not null,
+	id_livro integer not null,
+	constraint fk_leitor foreign key (id_leitor) references leitores(id),
+	constraint fk_livro foreign key (id_livro) references livros(id),
+	constraint pk_leituras primary key (id)
+	);
+
+create table if not exists colecao(
+	id serial not null,
+	nome varchar(80) unique,
+	id_leitor integer not null,
+	id_livro integer[] not null,
+	id_livros integer,
+	constraint fk_leitor foreign key (id_leitor) references leitores(id),
+	constraint fk_livro foreign key (id_livros) references livros(id)
+)
